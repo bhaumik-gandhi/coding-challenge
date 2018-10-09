@@ -1,0 +1,36 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "pretty": true,
+    "outDir": "dist",
+    "baseUrl": "/",
+    "sourceMap": true,
+    "declaration": false,
+    "importHelpers": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noImplicitAny": false,
+    "strictNullChecks": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "es6",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2016",
+      "esnext.asynciterable",
+      "dom"
+    ]
+  },
+  "include": [
+      "src/*.ts",
+      "test/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "_old",
+    "**/*.spec.ts"
+  ]
+}

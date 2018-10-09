@@ -1,0 +1,28 @@
+{
+  "name": "agordia-graphql-mock",
+  "version": "0.2.0",
+  "license": "Agordia LLC",
+  "private": true,
+  "scripts": {
+    "start": "yarn && yarn server",
+    "server": "cross-env NODE_ENV=development nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.spec.ts' --exec 'ts-node' src/server.ts"
+  },
+  "dependencies": {
+    "casual": "^1.5.19",
+    "cross-env": "^5.1.5",
+    "deepmerge": "^2.1.0",
+    "dotenv": "^5.0.1",
+    "fs-extra": "^6.0.1",
+    "graphql": "^0.13.2",
+    "graphql-import": "^0.6.0",
+    "graphql-tools": "2",
+    "graphql-voyager": "^1.0.0-rc.19",
+    "graphql-yoga": "^1.14.0"
+  },
+  "devDependencies": {
+    "@types/deepmerge": "^2.1.0",
+    "nodemon": "^1.17.4",
+    "ts-node": "^6.0.3",
+    "typescript": "^2.8.3"
+  }
+}
