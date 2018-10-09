@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text, FlatList } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 
 // Import actions
-import { getUserList } from '../ducks';
+import { getUserList, selectUser } from '../ducks';
 
 class UserList extends Component {
     static navigationOptions = {
@@ -15,14 +15,18 @@ class UserList extends Component {
         props.getUserList();
     }
 
+    goToUserDetailPage = (user: User) => {
+        this.props.selectUser(user, this.props.navigation);
+    }
+
     renderUser = (user: any) => {
-        console.log('user', user);
-        
         const { item } = user;
         return <View>
-            <Text>
-                {item.firstName + ' ' + item.lastName}
-            </Text>
+            <TouchableOpacity onPress={() => this.goToUserDetailPage(item)}>
+                <Text>
+                    {item.firstName + ' ' + item.lastName}
+                </Text>
+            </TouchableOpacity>
         </View>
     }
 
@@ -51,4 +55,7 @@ const mapStateToProps = (state: any) => {
     return { userList: users.userList.users }
 }
 
-export default connect(mapStateToProps, { getUserList })(UserList);
+export default connect(mapStateToProps, { 
+    getUserList, 
+    selectUser 
+})(UserList);
