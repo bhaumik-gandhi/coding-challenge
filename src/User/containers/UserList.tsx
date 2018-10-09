@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text, FlatList, TouchableOpacity } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
+
+import { User } from '../models';
 
 // Import actions
 import { getUserList, selectUser } from '../ducks';
@@ -21,13 +23,23 @@ class UserList extends Component {
 
     renderUser = (user: any) => {
         const { item } = user;
-        return <View>
-            <TouchableOpacity onPress={() => this.goToUserDetailPage(item)}>
-                <Text>
-                    {item.firstName + ' ' + item.lastName}
-                </Text>
-            </TouchableOpacity>
-        </View>
+        const { listNameStyle, shortNameContainer, textStyle } = styles;
+
+        return (
+            <View style={listNameStyle}>
+                <View style={shortNameContainer}>
+                    <Text style={textStyle}>
+                        {item.firstName[0] + item.lastName[0]}
+                    </Text>
+                </View>
+
+                <TouchableOpacity onPress={() => this.goToUserDetailPage(item)}>
+                    <Text style={textStyle}>
+                        {item.firstName + ' ' + item.lastName}
+                    </Text>
+                </TouchableOpacity>
+            </View>
+        );
     }
 
     render() {
@@ -48,6 +60,28 @@ class UserList extends Component {
         );
     }
 }
+
+const styles = StyleSheet.create({
+    listNameStyle: {
+        flexDirection: 'row',
+        padding: 8,
+        alignItems: 'center'
+    },
+    shortNameContainer: {
+        flexDirection: 'row',
+        marginRight: 12,
+        width: 50,
+        height: 50,
+        backgroundColor: 'lightblue',
+        borderRadius: 100,
+        padding: 10,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    textStyle: {
+        fontSize: 18
+    }
+})
 
 const mapStateToProps = (state: any) => {
     const { users } = state;   
