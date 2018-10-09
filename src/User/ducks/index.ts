@@ -9,7 +9,8 @@ export const getUserList = () => {
     return async (dispatch: any) => {
         try {
             const usersData = await gqlClient.query({
-                query: GET_USERS
+                query: GET_USERS,
+                fetchPolicy: 'network-only',
             });
 
             dispatch({

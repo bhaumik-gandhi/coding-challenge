@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
+import { 
+    View, Text, FlatList, 
+    TouchableOpacity, StyleSheet, Button 
+} from 'react-native';
 import { connect } from 'react-redux';
 
 import { User } from '../models';
@@ -50,12 +53,17 @@ class UserList extends Component {
         }
 
         return (
-            <View>
-              <FlatList 
-                data={ userList }
-                renderItem={(user: any) => this.renderUser(user)}
-                keyExtractor={(user, index) => index.toString()}
-              />  
+            <View style={{ flex: 1 }}>
+                <FlatList 
+                    data={ userList }
+                    renderItem={(user: any) => this.renderUser(user)}
+                    keyExtractor={(user, index) => index.toString()}
+                />
+
+                <Button 
+                    onPress={this.props.getUserList} 
+                    title='Fetch Another' 
+                />
             </View>
         );
     }
@@ -69,12 +77,12 @@ const styles = StyleSheet.create({
     },
     shortNameContainer: {
         flexDirection: 'row',
-        marginRight: 12,
+        marginRight: 14,
         width: 50,
         height: 50,
         backgroundColor: 'lightblue',
         borderRadius: 100,
-        padding: 10,
+        padding: 8,
         alignItems: 'center',
         justifyContent: 'center'
     },
