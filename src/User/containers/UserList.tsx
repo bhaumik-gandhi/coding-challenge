@@ -84,9 +84,15 @@ const styles = StyleSheet.create({
 })
 
 const mapStateToProps = (state: any) => {
-    const { users } = state;   
+    const { users } = state;
+    let userList;
+    
+    if (users.userList.users) {
+         // Short user list via firstName
+        userList = users.userList.users.sort((a: User, b: User) => a.firstName.localeCompare(b.firstName));
+    } 
 
-    return { userList: users.userList.users }
+    return { userList };
 }
 
 export default connect(mapStateToProps, { 
