@@ -15,9 +15,12 @@ class UserList extends Component {
         title: 'Users'
     }
 
-    constructor(props: any) {
-        super(props);
-        props.getUserList();
+    // constructor(props: any) {
+    //     super(props);        
+    // }
+
+    componentDidMount() {
+        this.props.getUserList();
     }
 
     goToUserDetailPage = (user: User) => {
